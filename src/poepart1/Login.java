@@ -1,3 +1,4 @@
+// Handles user registration and authentication login
 package poepart1; // Make sure this matches your package name at the top!
 
 import java.util.regex.Pattern;
