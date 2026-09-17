@@ -1,3 +1,4 @@
+// Unit tests covering authentication status
 package poepart1;
 
 import poepart1.Login;
