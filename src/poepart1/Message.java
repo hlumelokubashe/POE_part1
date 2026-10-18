@@ -1,5 +1,6 @@
 package poepart1;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Message {
@@ -9,6 +10,13 @@ public class Message {
     private String messageText;
     private String messageHash;
     private static int totalMessagesSent = 0;
+
+    // Part 3: Dynamic Arrays for Storage & Tracking
+    public static ArrayList<Message> sentMessagesList = new ArrayList<>();
+    public static ArrayList<Message> disregardedMessagesList = new ArrayList<>();
+    public static ArrayList<Message> storedMessagesList = new ArrayList<>();
+    public static ArrayList<String> messageIDsList = new ArrayList<>();
+    public static ArrayList<String> messageHashesList = new ArrayList<>();
 
     public Message() {}
 
@@ -65,13 +73,23 @@ public class Message {
     }
 
     public String SentMessage(int choice) {
+        if (!messageIDsList.contains(this.messageID)) {
+            messageIDsList.add(this.messageID);
+        }
+        if (!messageHashesList.contains(this.messageHash)) {
+            messageHashesList.add(this.messageHash);
+        }
+
         switch (choice) {
             case 1:
                 totalMessagesSent++;
+                sentMessagesList.add(this);
                 return "Message successfully sent.";
             case 2:
+                disregardedMessagesList.add(this);
                 return "Press 0 to delete the message.";
             case 3:
+                storedMessagesList.add(this);
                 storeMessage();
                 return "Message successfully stored.";
             default:
